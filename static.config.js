@@ -1,26 +1,23 @@
-import axios from 'axios'
+import fs from 'fs'
 
 export default {
   getSiteData: () => ({
     title: 'React Static',
   }),
   getRoutes: async () => {
-    const { data: posts } = await axios.get(
-      'https://jsonplaceholder.typicode.com/posts'
-    )
+    console.log(process.cwd())
+    const publicDir = "./public"
+    const experiments = fs.readdirSync(publicDir)
+      .map(name => ({name, path: `${publicDir}/${name}`}))
+      .filter(exp => fs.lstatSync(exp.path).isDirectory())
+
     return [
       {
-        path: '/blog',
+        path: '/experiments',
+        component: 'src/pages/experiments',
         getData: () => ({
-          posts,
+          experiments,
         }),
-        children: posts.map(post => ({
-          path: `/post/${post.id}`,
-          component: 'src/containers/Post',
-          getData: () => ({
-            post,
-          }),
-        })),
       },
     ]
   },

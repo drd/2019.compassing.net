@@ -9,8 +9,7 @@ function App() {
     <Root>
       <nav>
         <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/blog">Blog</Link>
+        <Link to="/experiments">Experiments</Link>
       </nav>
       <div className="content">
         <Routes />

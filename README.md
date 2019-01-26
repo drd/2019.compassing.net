@@ -1,3 +1,3 @@
-# React-Static - Basic Template
+# It's a personal website!
 
-To use this template, run `react-static create` and use the `basic` template.
+It's been a while. Time to share things with the world again.
